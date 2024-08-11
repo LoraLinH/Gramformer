@@ -12,7 +12,7 @@ def parse_args():
                         help='training data directory')
     parser.add_argument('--save-dir', default='model',
                         help='directory to save models.')
-    parser.add_argument('--save-all', type=bool, default=True,
+    parser.add_argument('--save-all', type=bool, default=False,
                         help='whether to save all best model')
     parser.add_argument('--lr', type=float, default=0.5*1e-5,
                         help='the initial learning rate')
@@ -20,6 +20,8 @@ def parse_args():
                         help='the weight decay')
     parser.add_argument('--resume', default='',
                         help='the path of resume training model')
+    parser.add_argument('--max-model-num', type=int, default=1,
+                        help='max models num to save ')
     parser.add_argument('--max-epoch', type=int, default=1000,
                         help='max training epoch')
     parser.add_argument('--val-epoch', type=int, default=5,
