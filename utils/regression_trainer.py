@@ -63,7 +63,7 @@ class RegTrainer(Trainer):
                                           pin_memory=(False))
                                         #   pin_memory=(True if x == 'train' else False))
                             for x in ['train', 'val']}
-        self.model = vgg19_trans(args.topk, args.usenum, args.promptnum)
+        self.model = vgg19_trans(args.topk, args.usenum)
         self.model.to(self.device)
         self.optimizer = optim.Adam(self.model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
 
@@ -129,8 +129,7 @@ class RegTrainer(Trainer):
                     loss_pe = torch.sum(loss_pe)
                     loss += 0.1*loss_pe
                 loss.backward()
-
-            # if step % 10 == 9:    
+  
             if True:      
                 self.optimizer.step()
                 self.optimizer.zero_grad()
